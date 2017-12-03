@@ -17,3 +17,43 @@ List of API
 9. Boolean Empty() - Is the List empty.
 10. AddBefore(Node, Key) - To add a key before the node
 11. AddAfter(Node, Key) - To add a key after the node
+
+# Node definition with Key and reference to the next Node
+
+class Node<T> implements Comparable<T> {
+
+    private Node<T> refToNextNode;
+    private T key;
+
+    @Override
+    public int compareTo(T o) {
+        if (o == this.key)
+            return 0;
+        else
+            return 1;
+    }
+}
+
+# Algo for PushFront
+
+A reference of head and tail is created
+
+public void pushFront(T key) {
+
+        /*step 1 : create a new node*/
+        Node<T> newNode = new Node<T>();
+        newNode.setKey(key);
+
+       /* Check if head is null, if it is which means list is empty,
+        we assign the new node to both head and tail
+        else we set the reference of the existing tail to new node
+        and then assign the new node to tail*/
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.setRefToNextNode(newNode);
+            tail = newNode;
+        }
+    }
