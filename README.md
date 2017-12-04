@@ -111,3 +111,36 @@ if head is not empty,
             tail = newNode;
         }
     }
+    
+ # Algo for PopBack
+ 
+ PopBack means removing an item from the end of the linked list
+ 
+ Steps to remove an item from the end of the linked list are as follows
+ 
+ Case 1 : when the linked list is empty. No action to be taken
+ Case 2 : When there is only one element in the linked list, make both head and tail as null
+ Case 3 : When there are elements in the linked list
+ 1. Traverse the whole Linked List till the reference to the next node points to tail.
+ 2. Change the node to tail and make the reference of the node to null.
+ 
+    
+    public void popLast() {
+         if (head == null) {
+             System.out.println("Empty List");
+         } else if (head == tail) {
+             head = null;
+             tail = null;
+             System.out.println("The list after the pop up is empty");
+         } else {
+             Node<T> temp = head;
+             while (true) {
+                 if (temp.getRefToNextNode() == tail) {
+                     break;
+                 }
+                 temp = temp.getRefToNextNode();
+             }
+             tail = temp;
+             tail.setRefToNextNode(null);
+         }
+     }

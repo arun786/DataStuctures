@@ -13,13 +13,16 @@ public class SinglyLinkedList {
         System.out.println(lst);
 
         lst.popFront();
-        lst.popFront();
-        lst.popFront();
-        lst.popFront();
-        lst.popFront();
         System.out.println("The new head is " + lst.head);
         lst.pushBack("dravid");
         System.out.println("The new tail is " + lst.tail + " and the head is " + lst.head);
+
+        lst.popLast();
+        lst.popLast();
+        lst.popLast();
+        lst.popLast();
+        lst.popLast();
+        System.out.println(lst.tail);
 
 
     }
@@ -86,6 +89,29 @@ class SinglyLinkedListImpl<T> {
         } else {
             head = newNode;
             tail = newNode;
+        }
+    }
+
+    /**
+     * Delete the last element of the list
+     */
+    public void popLast() {
+        if (head == null) {
+            System.out.println("Empty List");
+        } else if (head == tail) {
+            head = null;
+            tail = null;
+            System.out.println("The list after the pop up is empty");
+        } else {
+            Node<T> temp = head;
+            while (true) {
+                if (temp.getRefToNextNode() == tail) {
+                    break;
+                }
+                temp = temp.getRefToNextNode();
+            }
+            tail = temp;
+            tail.setRefToNextNode(null);
         }
     }
 
