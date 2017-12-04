@@ -17,6 +17,11 @@ public class SinglyLinkedList {
         lst.popFront();
         lst.popFront();
         lst.popFront();
+        System.out.println("The new head is " + lst.head);
+        lst.pushBack("dravid");
+        System.out.println("The new tail is " + lst.tail + " and the head is " + lst.head);
+
+
     }
 }
 
@@ -65,6 +70,22 @@ class SinglyLinkedListImpl<T> {
                 tail = null;
             }
             System.out.println("Deleted .. " + temp.getKey());
+        }
+    }
+
+    /**
+     * @param key This method adds a new key at the end of the list
+     */
+    public void pushBack(T key) {
+
+        Node<T> newNode = new Node<T>();
+        newNode.setKey(key);
+        if (tail != null) {
+            tail.setRefToNextNode(newNode);
+            tail = newNode;
+        } else {
+            head = newNode;
+            tail = newNode;
         }
     }
 

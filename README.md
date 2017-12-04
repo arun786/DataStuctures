@@ -58,8 +58,8 @@ public void pushFront(T key) {
         }
     }
 
-# Algo for popFront()
-Logic followed is if head is null which means the linkedlist is empty
+# Algo for PopFront
+Logic followed is if head is null which means the linked List is empty
 if head is not empty, 
 1. create a new Node and store head in it
 2. get the next reference from the new node which is basically the next node
@@ -84,5 +84,30 @@ if head is not empty,
                 tail = null;
             }
             System.out.println("Deleted .. " + temp.getKey());
+        }
+    }
+    
+# Algo for PushBack
+
+1. Create a new node.
+2. Add the reference of the new node to the tail
+3. Make the new node as the tail
+4. if the list is empty, add to head too
+
+    
+    /**
+     * @param key This method adds a new key at the end of the list
+     */
+     
+    public void pushBack(T key) {
+
+        Node<T> newNode = new Node<T>();
+        newNode.setKey(key);
+        if (tail != null) {
+            tail.setRefToNextNode(newNode);
+            tail = newNode;
+        } else {
+            head = newNode;
+            tail = newNode;
         }
     }
