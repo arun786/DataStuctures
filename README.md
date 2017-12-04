@@ -125,7 +125,9 @@ if head is not empty,
  2. Change the node to tail and make the reference of the node to null.
  
     
+    
     public void popLast() {
+    
          if (head == null) {
              System.out.println("Empty List");
          } else if (head == tail) {
@@ -143,4 +145,5 @@ if head is not empty,
              tail = temp;
              tail.setRefToNextNode(null);
          }
+         
      }
