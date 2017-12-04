@@ -112,7 +112,7 @@ if head is not empty,
         }
     }
     
- # Algo for PopBack
+# Algo for PopBack
  
  PopBack means removing an item from the end of the linked list
  
@@ -150,3 +150,31 @@ if head is not empty,
          }
          
      }
+     
+# Algo for AddAfter
+
+This means adding a node after a particular node.
+
+Steps to be followed are 
+
+Say we have node n1 after which we need to add a new node n2.
+
+Case 1 : when the list is empty, add the new node to the head and tail.
+
+Case 2 : When the list has only one element or if the node is added at the end.
+
+    Step 1 : Create a new node n2 and assign the key to it
+
+    Step 2 : check for the reference of the next node of the node(n1), if it blank
+
+    Step 3 : Add the reference of the new node to the tail.
+
+    Step 4 : Mark the new node as tail.
+
+Case 3 : when the list is not empty or the last reference of the node n1 is not blank.
+
+    Step 1 : Create a new node n2 and assign the key to it
+
+    Step 2 : add the reference of the next node of the node(n1) to the new node(n2)
+
+    Step 3 : Add the reference of the new node(n2) to the existing node(n1).
