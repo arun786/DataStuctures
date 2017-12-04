@@ -65,6 +65,7 @@ if head is not empty,
 2. get the next reference from the new node which is basically the next node
 3. store that as head.
 
+    
     /**
      * This method is to remove an element from front
      */
