@@ -5,18 +5,28 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
 
         SinglyLinkedListImpl<String> lst = new SinglyLinkedListImpl<String>();
-        lst.pushFront("arun");
+        /*lst.pushFront("arun");
         lst.pushFront("adwiti");
         lst.pushFront("sachin");
-        lst.pushFront("kavya");
+        lst.pushFront("kavya");*/
 
         System.out.println(lst);
 
-        lst.popFront();
-        lst.popFront();
-        lst.popFront();
-        lst.popFront();
-        lst.popFront();
+        /*lst.popFront();
+        System.out.println("The new head is " + lst.head);
+        lst.pushBack("dravid");
+        System.out.println("The new tail is " + lst.tail + " and the head is " + lst.head);
+
+        lst.popLast();
+        System.out.println(lst.tail);
+*/
+
+        lst.addAfter(lst.head, "pushpa");
+
+       /* lst.popFront();
+        lst.popFront();*/
+        System.out.println(lst.head);
+
     }
 }
 
@@ -65,6 +75,66 @@ class SinglyLinkedListImpl<T> {
                 tail = null;
             }
             System.out.println("Deleted .. " + temp.getKey());
+        }
+    }
+
+    /**
+     * @param key This method adds a new key at the end of the list
+     */
+    public void pushBack(T key) {
+
+        Node<T> newNode = new Node<T>();
+        newNode.setKey(key);
+        if (tail != null) {
+            tail.setRefToNextNode(newNode);
+            tail = newNode;
+        } else {
+            head = newNode;
+            tail = newNode;
+        }
+    }
+
+    /**
+     * Delete the last element of the list
+     */
+    public void popLast() {
+        if (head == null) {
+            System.out.println("Empty List");
+        } else if (head == tail) {
+            head = null;
+            tail = null;
+            System.out.println("The list after the pop up is empty");
+        } else {
+            Node<T> temp = head;
+            while (true) {
+                if (temp.getRefToNextNode() == tail) {
+                    break;
+                }
+                temp = temp.getRefToNextNode();
+            }
+            tail = temp;
+            tail.setRefToNextNode(null);
+        }
+    }
+
+    /**
+     * @param node
+     * @param key
+     */
+    public void addAfter(Node<T> node, T key) {
+        Node<T> n2 = new Node<T>();
+        n2.setKey(key);
+
+        if (head == null) {
+            head = n2;
+            tail = n2;
+        } else {
+            if (node.getRefToNextNode() == null) {
+                node.setRefToNextNode(n2);
+            } else {
+                n2.setRefToNextNode(node.getRefToNextNode());
+                node.setRefToNextNode(n2);
+            }
         }
     }
 

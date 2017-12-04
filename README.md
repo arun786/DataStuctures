@@ -58,26 +58,151 @@ public void pushFront(T key) {
         }
     }
 
-# Algo for popFront()
-Logic followed is if head is null which means the linkedlist is empty
+# Algo for PopFront
+Logic followed is if head is null which means the linked List is empty
 if head is not empty, 
 1. create a new Node and store head in it
 2. get the next reference from the new node which is basically the next node
 3. store that as head.
 
+    
     /**
      * This method is to remove an element from front
      */
+     
     public void popFront() {
+    
         if (head == null) {
             System.out.println("List is empty");
         }
+        
         Node<T> temp = head;
+        
         if (temp != null) {
             head = temp.getRefToNextNode();
             if (head == null) {
                 tail = null;
             }
             System.out.println("Deleted .. " + temp.getKey());
+        }
+    }
+    
+# Algo for PushBack
+
+1. Create a new node.
+2. Add the reference of the new node to the tail
+3. Make the new node as the tail
+4. if the list is empty, add to head too
+
+    
+    /**
+     * @param key This method adds a new key at the end of the list
+     */
+     
+    public void pushBack(T key) {
+
+        Node<T> newNode = new Node<T>();
+        newNode.setKey(key);
+        if (tail != null) {
+            tail.setRefToNextNode(newNode);
+            tail = newNode;
+        } else {
+            head = newNode;
+            tail = newNode;
+        }
+    }
+    
+# Algo for PopBack
+ 
+ PopBack means removing an item from the end of the linked list
+ 
+ Steps to remove an item from the end of the linked list are as follows
+ 
+ Case 1 : when the linked list is empty. No action to be taken
+ 
+ Case 2 : When there is only one element in the linked list, make both head and tail as null
+ 
+ Case 3 : When there are elements in the linked list
+ 
+ 1. Traverse the whole Linked List till the reference to the next node points to tail.
+ 2. Change the node to tail and make the reference of the node to null.
+ 
+    
+    
+    public void popLast() {
+    
+         if (head == null) {
+             System.out.println("Empty List");
+         } else if (head == tail) {
+             head = null;
+             tail = null;
+             System.out.println("The list after the pop up is empty");
+         } else {
+             Node<T> temp = head;
+             while (true) {
+                 if (temp.getRefToNextNode() == tail) {
+                     break;
+                 }
+                 temp = temp.getRefToNextNode();
+             }
+             tail = temp;
+             tail.setRefToNextNode(null);
+         }
+         
+     }
+     
+# Algo for AddAfter
+
+This means adding a node after a particular node.
+
+Steps to be followed are 
+
+Say we have node n1 after which we need to add a new node n2.
+
+Case 1 : when the list is empty, add the new node to the head and tail.
+
+Case 2 : When the list has only one element or if the node is added at the end.
+
+    Step 1 : Create a new node n2 and assign the key to it
+
+    Step 2 : check for the reference of the next node of the node(n1), if it blank
+
+    Step 3 : Add the reference of the new node to the tail.
+
+    Step 4 : Mark the new node as tail.
+
+Case 3 : when the list is not empty or the last reference of the node n1 is not blank.
+
+    Step 1 : Create a new node n2 and assign the key to it
+
+    Step 2 : add the reference of the next node of the node(n1) to the new node(n2)
+
+    Step 3 : Add the reference of the new node(n2) to the existing node(n1).
+    
+    
+    public void addAfter(Node<T> node, T key) {
+    
+        Node<T> n2 = new Node<T>();
+        n2.setKey(key);
+
+        /*Case 1 : When Node is added to Empty Linked List*/
+        
+        if (head == null) {
+            head = n2;
+            tail = n2;
+        } else {
+        
+            /*Case 2 When the Node is added after the last node*/
+            
+            if (node.getRefToNextNode() == null) {
+                node.setRefToNextNode(n2);
+            } 
+            
+            /*Case 3 : when node is added in between*/
+            
+            else {
+                n2.setRefToNextNode(node.getRefToNextNode());
+                node.setRefToNextNode(n2);
+            }
         }
     }
