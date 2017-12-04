@@ -178,3 +178,31 @@ Case 3 : when the list is not empty or the last reference of the node n1 is not 
     Step 2 : add the reference of the next node of the node(n1) to the new node(n2)
 
     Step 3 : Add the reference of the new node(n2) to the existing node(n1).
+    
+    
+    public void addAfter(Node<T> node, T key) {
+    
+        Node<T> n2 = new Node<T>();
+        n2.setKey(key);
+
+        /*Case 1 : When Node is added to Empty Linked List*/
+        
+        if (head == null) {
+            head = n2;
+            tail = n2;
+        } else {
+        
+            /*Case 2 When the Node is added after the last node*/
+            
+            if (node.getRefToNextNode() == null) {
+                node.setRefToNextNode(n2);
+            } 
+            
+            /*Case 3 : when node is added in between*/
+            
+            else {
+                n2.setRefToNextNode(node.getRefToNextNode());
+                node.setRefToNextNode(n2);
+            }
+        }
+    }

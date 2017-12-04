@@ -5,25 +5,27 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
 
         SinglyLinkedListImpl<String> lst = new SinglyLinkedListImpl<String>();
-        lst.pushFront("arun");
+        /*lst.pushFront("arun");
         lst.pushFront("adwiti");
         lst.pushFront("sachin");
-        lst.pushFront("kavya");
+        lst.pushFront("kavya");*/
 
         System.out.println(lst);
 
-        lst.popFront();
+        /*lst.popFront();
         System.out.println("The new head is " + lst.head);
         lst.pushBack("dravid");
         System.out.println("The new tail is " + lst.tail + " and the head is " + lst.head);
 
         lst.popLast();
-        lst.popLast();
-        lst.popLast();
-        lst.popLast();
-        lst.popLast();
         System.out.println(lst.tail);
+*/
 
+        lst.addAfter(lst.head, "pushpa");
+
+       /* lst.popFront();
+        lst.popFront();*/
+        System.out.println(lst.head);
 
     }
 }
@@ -112,6 +114,27 @@ class SinglyLinkedListImpl<T> {
             }
             tail = temp;
             tail.setRefToNextNode(null);
+        }
+    }
+
+    /**
+     * @param node
+     * @param key
+     */
+    public void addAfter(Node<T> node, T key) {
+        Node<T> n2 = new Node<T>();
+        n2.setKey(key);
+
+        if (head == null) {
+            head = n2;
+            tail = n2;
+        } else {
+            if (node.getRefToNextNode() == null) {
+                node.setRefToNextNode(n2);
+            } else {
+                n2.setRefToNextNode(node.getRefToNextNode());
+                node.setRefToNextNode(n2);
+            }
         }
     }
 
