@@ -69,6 +69,7 @@ if head is not empty,
     /**
      * This method is to remove an element from front
      */
+     
     public void popFront() {
         if (head == null) {
             System.out.println("List is empty");
