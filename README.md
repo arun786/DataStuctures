@@ -71,10 +71,13 @@ if head is not empty,
      */
      
     public void popFront() {
+    
         if (head == null) {
             System.out.println("List is empty");
         }
+        
         Node<T> temp = head;
+        
         if (temp != null) {
             head = temp.getRefToNextNode();
             if (head == null) {
