@@ -11,6 +11,12 @@ public class SinglyLinkedList {
         lst.pushFront("kavya");
 
         System.out.println(lst);
+
+        lst.popFront();
+        lst.popFront();
+        lst.popFront();
+        lst.popFront();
+        lst.popFront();
     }
 }
 
@@ -23,6 +29,9 @@ class SinglyLinkedListImpl<T> {
     Node<T> head;
     Node<T> tail;
 
+    /**
+     * @param key This method adds a key in other words value to the single linked list
+     */
     public void pushFront(T key) {
         /*step 1 : create a new node*/
         Node<T> newNode = new Node<T>();
@@ -39,6 +48,23 @@ class SinglyLinkedListImpl<T> {
         } else {
             tail.setRefToNextNode(newNode);
             tail = newNode;
+        }
+    }
+
+    /**
+     * This method is to remove an element from front
+     */
+    public void popFront() {
+        if (head == null) {
+            System.out.println("List is empty");
+        }
+        Node<T> temp = head;
+        if (temp != null) {
+            head = temp.getRefToNextNode();
+            if (head == null) {
+                tail = null;
+            }
+            System.out.println("Deleted .. " + temp.getKey());
         }
     }
 

@@ -57,3 +57,27 @@ public void pushFront(T key) {
             tail = newNode;
         }
     }
+
+# Algo for popFront()
+Logic followed is if head is null which means the linkedlist is empty
+if head is not empty, 
+1. create a new Node and store head in it
+2. get the next reference from the new node which is basically the next node
+3. store that as head.
+
+    /**
+     * This method is to remove an element from front
+     */
+    public void popFront() {
+        if (head == null) {
+            System.out.println("List is empty");
+        }
+        Node<T> temp = head;
+        if (temp != null) {
+            head = temp.getRefToNextNode();
+            if (head == null) {
+                tail = null;
+            }
+            System.out.println("Deleted .. " + temp.getKey());
+        }
+    }
