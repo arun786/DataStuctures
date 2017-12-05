@@ -206,3 +206,30 @@ Case 3 : when the list is not empty or the last reference of the node n1 is not 
             }
         }
     }
+    
+# Stack
+
+Represents an abstract data type, LIFO
+
+Operations of a Stack are 
+
+1. Push(key) - adds a key to the collection
+2. Key Pop() - removes and returns most recently added key from the collection
+3. key Top() - returns most recently added key to a collection
+
+Example of stack.
+Balanced String
+
+A string consists of sequence of brackets, to determine which has got a pair.
+
+Example String str = "()[]()("
+
+We need to check how many do not have a pair.
+
+Steps to be followed. Assumptions the pair should have opening first and closing after 
+opening.
+
+1. iterate each character in the loop.
+2. if you come across opening braces such as ( or { or [, put it in a stack
+3. else pop the element from the stack and compare with the element, if it doesnot match 
+in the sense opening doesnot have a closing, return false. The string is not balanced.
