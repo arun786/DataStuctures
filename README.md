@@ -230,6 +230,34 @@ Steps to be followed. Assumptions the pair should have opening first and closing
 opening.
 
 1. iterate each character in the loop.
+
 2. if you come across opening braces such as ( or { or [, put it in a stack
+
 3. else pop the element from the stack and compare with the element, if it doesnot match 
-in the sense opening doesnot have a closing, return false. The string is not balanced.
+in the sense opening does not have a closing, return false. The string is not balanced.
+
+String parenthesis = "()()[]"
+
+public static boolean isBalanced(String parenthesis) {
+
+        char[] valuesinString = parenthesis.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for (char c : valuesinString) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.empty())
+                    return false;
+                Character fromStack = stack.pop();
+
+                if ((fromStack == '(' && c != ')') || (fromStack == '{' && c != '}') || (fromStack == '[' && c != ']')) {
+                    return false;
+                }
+            }
+        }
+        if (stack.empty())
+            return true;
+        else
+            return false;
+            
+    }
