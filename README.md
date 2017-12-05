@@ -233,7 +233,7 @@ opening.
 
 2. if you come across opening braces such as ( or { or [, put it in a stack
 
-3. else pop the element from the stack and compare with the element, if it doesnot match 
+3. else pop the element from the stack and compare with the element, if it does not match 
 in the sense opening does not have a closing, return false. The string is not balanced.
 
 String parenthesis = "()()[]"
@@ -261,3 +261,7 @@ public static boolean isBalanced(String parenthesis) {
             return false;
             
     }
+    
+#Stack
+
+Abstract data Type with the following operations.
