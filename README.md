@@ -261,3 +261,14 @@ public static boolean isBalanced(String parenthesis) {
             return false;
             
     }
+    
+    
+# Queue
+
+Abstract Datatype with the following operations, Also Known as FIFO
+
+1. Enqueue(key) : Adds key to a collection.
+
+2. key dequeue : removes a key from the collection.
+
+3. Boolean isEmpty;
