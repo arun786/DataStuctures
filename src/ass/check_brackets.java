@@ -20,7 +20,7 @@ public class check_brackets {
 
         for (int i = 0; i < input.length; i++) {
             if (input[i] == '(' || input[i] == '{' || input[i] == '[') {
-                stack.push( i + "," + input[i]);
+                stack.push(i + "," + input[i]);
                 flag = false;
             } else {
                 flag = true;
@@ -32,29 +32,33 @@ public class check_brackets {
 
                     String pop = stack.pop();
                     String split[] = pop.split(",");
-                    String index = split[0];
                     char popedValue = split[1].toCharArray()[0];
                     if ((popedValue == '(' && input[i] != ')') || (popedValue == '[' && input[i] != ']')
                             || (popedValue == '{' && input[i] != '}')) {
-                            return "" + (i+1);
+                        return "" + (i + 1);
                     }
                 }
             }
         }
 
         if (!stack.isEmpty()) {
+            /**
+             * This section is for stack having all open parenthesis, there were no closing parenthesis in the string
+             */
             if (flag == false) {
                 String p = stack.firstElement();
                 String split[] = p.split(",");
                 String i = split[0];
                 return "" + (Integer.parseInt(i) + 1);
             }
-            if (!stack.isEmpty()) {
-                String pop = stack.pop();
-                String split[] = pop.split(",");
-                String index = split[0];
-                return "" + (Integer.parseInt(index) + 1);
-            }
+
+            /**
+             * This section is for String where both open and close parenthesis was present
+             */
+            String pop = stack.pop();
+            String split[] = pop.split(",");
+            String index = split[0];
+            return "" + (Integer.parseInt(index) + 1);
         }
         return "Success";
     }
