@@ -13,37 +13,48 @@ public class check_brackets {
         char[] input = balance.toCharArray();
         Stack<Character> stack = new Stack<>();
         Stack<Character> stack1 = new Stack<>();
-        int k = 0;
 
         for (int i = 0; i < input.length; i++) {
+            stack1.push(input[i]);
             if (input[i] == '(' || input[i] == '{' || input[i] == '[') {
                 stack.push(input[i]);
-                stack1.push(input[i]);
             } else {
+
                 if (stack.isEmpty() && (input[i] == ')' || input[i] == '}' || input[i] == ']')) {
                     return "" + (i + 1);
                 }
+
                 if (input[i] == ')' || input[i] == '}' || input[i] == ']') {
+
                     char popedValue = stack.pop();
                     if ((popedValue == '(' && input[i] != ')') || (popedValue == '[' && input[i] != ']')
                             || (popedValue == '{' && input[i] != '}')) {
                         return "" + (i + 1);
                     }
-                    char peek = stack.peek();
-                    if(peek == popedValue && i == input.length - 1){
-
-                    }
                 }
-
-
-                k = i + 1;
             }
         }
 
-
+        int index = stack1.size();
         if (!stack.isEmpty()) {
-            return "" + (k+1);
+            char firstValueNotMatched = stack.pop();
+            for (int i = stack1.size() - 1; i >= 0; i--) {
+                if (firstValueNotMatched == input[i]) {
+                    if (i > 0) {
+                        if (input[i] == input[i - 1]) {
+                            index--;
+                        }
+                    }
+                }
+            }
+
+            return "" + (index);
         }
+
+
+        /*if (!stack.isEmpty()) {*/
+
+        /*}*/
 
         return "Success";
     }
